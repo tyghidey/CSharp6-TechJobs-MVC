@@ -22,7 +22,7 @@ public IActionResult Results(string searchType, string searchTerm)
     {
         List<Job> jobs;
 
-        if (searchTerm  == "all" || string.IsNullOrEmpty(searchTerm))
+        if (searchTerm  == "all" || String.IsNullOrEmpty(searchTerm))
         {
             jobs = JobData.FindAll();
         }
@@ -31,6 +31,7 @@ public IActionResult Results(string searchType, string searchTerm)
             jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
         }
 
+        ViewBag.title = "Job information";
         ViewBag.jobs = jobs;
         ViewBag.columns = ListController.ColumnChoices;
         
